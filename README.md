@@ -1,39 +1,50 @@
 # RubixSim - Interactive Rubik's Cube Simulator
 
-A comprehensive web-based Rubik's Cube simulator designed to help you progress from beginner to expert. Built with modern web technologies for a smooth, interactive 3D experience.
+🎯 **Your complete learning platform for mastering the Rubik's Cube**
 
-## Features
+A comprehensive web-based Rubik's Cube simulator designed to help you progress from beginner to expert. Built with modern web technologies for a smooth, interactive 3D experience with advanced training features and detailed progress tracking.
+
+## 🚀 Features
 
 ### Core Functionality
 - **3D Interactive Cube**: Fully rendered 3D Rubik's cube with smooth animations
-- **Complete Move Set**: All standard notation moves (F, B, U, D, L, R) with prime and double variants
+- **Complete Move Set**: All standard notation moves including:
+  - Basic moves (F, B, U, D, L, R)
+  - Prime variants (F', B', U', D', L', R')
+  - Double moves (F2, B2, U2, D2, L2, R2)
+  - Slice moves (M, E, S and variants)
+  - Cube rotations (x, y, z and variants)
 - **Mouse/Touch Controls**: Rotate the cube view with intuitive controls
 - **Keyboard Shortcuts**: Fast input for experienced users
 
-### Learning Tools
-- **Tutorial Mode**: Step-by-step guides for beginners
-- **Notation Guide**: Interactive reference for all cube moves
-- **Algorithm Library**: Collection of common patterns and solutions
-- **Practice Modes**: Focused training for specific techniques
-  - Cross solving
-  - F2L (First Two Layers)
-  - OLL (Orientation of Last Layer)
-  - PLL (Permutation of Last Layer)
+### 📚 Learning Tools
+- **Interactive Tutorial**: 11-step beginner guide with the layer-by-layer method
+- **Notation Guide**: Interactive reference for all 54 possible cube moves
+- **Algorithm Library**: 20+ pre-loaded algorithms organized by category
+- **Practice Mode**: Focused training with 4 practice sets:
+  - White Cross techniques
+  - F2L (First Two Layers) - 41 cases
+  - OLL (Orientation of Last Layer) - 57 algorithms
+  - PLL (Permutation of Last Layer) - 21 algorithms
 
-### Advanced Features
-- **Smart Scrambler**: Generate random or pattern-specific scrambles
-- **Timer**: Track your solving times with statistics
-- **Move Counter**: Monitor solving efficiency
-- **Solution Finder**: Get optimal solutions for any position
-- **Hint System**: Contextual suggestions for next moves
-- **Move History**: Complete undo/redo functionality
-- **Save States**: Bookmark interesting positions
+### 📊 Training & Analytics
+- **Smart Scrambler**: Generate random 20-move scrambles
+- **Professional Timer**: Track solving times with auto-start on first move
+- **Move Counter**: Monitor solving efficiency in real-time
+- **Comprehensive Statistics**:
+  - Personal best (PB) tracking
+  - Average of 5, 12, 100, and overall
+  - Daily solve counter
+  - Streak tracking
+  - Improvement percentage calculator
+- **Session Management**: Track attempts per practice session
+- **Move History**: Complete undo/redo functionality (Ctrl+Z/Ctrl+Shift+Z)
 
-### Progress Tracking
-- **Learning Path**: Structured progression from beginner to advanced
-- **Statistics Dashboard**: Track improvement over time
-- **Achievement System**: Unlock milestones as you improve
-- **Personal Records**: Best times for different categories
+### 🎯 Progress Tracking
+- **Automatic Save**: All solves saved to local storage
+- **Historical Data**: View all past solves with time, moves, and scrambles
+- **Performance Trends**: Track improvement over time
+- **Daily Goals**: Streak counter to encourage consistent practice
 
 ## Getting Started
 
@@ -58,13 +69,55 @@ npm run dev
 npm run build
 ```
 
-### Quick Start Guide
+### 🎮 Quick Start Guide
 
-1. **First Time Users**: Start with Tutorial Mode to learn basic concepts
-2. **Learn Notation**: Use the Notation Guide to understand move symbols
-3. **Practice Basics**: Begin with the white cross in Practice Mode
-4. **Track Progress**: Use the timer to measure improvement
-5. **Advanced Techniques**: Progress to F2L, OLL, and PLL algorithms
+#### For Complete Beginners:
+1. **Start with the Tutorial** (Tutorial Tab)
+   - Follow the 11-step beginner method
+   - Learn basic notation and concepts
+   - Practice each step before moving on
+
+2. **Understand Notation** (Notation Tab)
+   - Learn what F, R, U, etc. mean
+   - Practice individual moves
+   - Understand prime (') and double (2) modifiers
+
+3. **Practice Basic Patterns** (Practice Tab)
+   - Start with "White Cross" exercises
+   - Use the setup button to create practice scenarios
+   - Try solving before viewing solutions
+
+#### For Intermediate Cubers:
+1. **Learn F2L** (Practice Tab → F2L)
+   - Master the 41 F2L cases
+   - Focus on recognition and execution
+   - Track your progress with session attempts
+
+2. **Study Algorithms** (Algorithms Tab)
+   - Browse categorized algorithms
+   - Save favorites for quick access
+   - Practice execution with visual feedback
+
+3. **Time Your Solves** (Controls Tab)
+   - Use spacebar to start/stop timer
+   - Generate scrambles with 'N' key
+   - Track your averages in Statistics
+
+#### For Advanced Cubers:
+1. **Master OLL/PLL** (Practice Tab)
+   - Learn all 57 OLL algorithms
+   - Master all 21 PLL algorithms
+   - Focus on recognition speed
+
+2. **Analyze Performance** (Statistics Tab)
+   - Monitor Ao5, Ao12, Ao100
+   - Track improvement percentage
+   - Identify weak points
+
+3. **Optimize Efficiency** (Controls Tab)
+   - Minimize move count
+   - Practice finger tricks
+   - Use keyboard shortcuts for speed
 
 ## Keyboard Controls
 
@@ -117,14 +170,15 @@ npm run build
 3. **OLL**: Orient last layer (57 algorithms)
 4. **PLL**: Permute last layer (21 algorithms)
 
-## Technology Stack
+## 🛠 Technology Stack
 
-- **Frontend Framework**: React with TypeScript
-- **3D Graphics**: Three.js for WebGL rendering
-- **Build Tool**: Vite for fast development
-- **Styling**: Tailwind CSS for responsive design
-- **State Management**: Zustand for app state
-- **Animation**: Framer Motion for smooth transitions
+- **Frontend Framework**: React 18 with TypeScript 5
+- **3D Graphics**: Three.js + React Three Fiber for WebGL rendering
+- **Build Tool**: Vite 5 for lightning-fast HMR
+- **Styling**: Tailwind CSS 3 for responsive design
+- **State Management**: Zustand for efficient state updates
+- **Keyboard Handling**: React Hotkeys Hook for shortcuts
+- **Icons**: React Icons for UI elements
 
 ## Browser Support
 
