@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Front face (green) -->
+  <rect x="30" y="30" width="40" height="40" fill="#009E60" stroke="#000" stroke-width="2"/>
+  
+  <!-- Top face (white) -->
+  <path d="M30 30 L50 10 L90 10 L70 30 Z" fill="#FFFFFF" stroke="#000" stroke-width="2"/>
+  
+  <!-- Right face (red) -->
+  <path d="M70 30 L90 10 L90 50 L70 70 Z" fill="#C41E3A" stroke="#000" stroke-width="2"/>
+  
+  <!-- Grid lines for front face -->
+  <line x1="43.33" y1="30" x2="43.33" y2="70" stroke="#000" stroke-width="1"/>
+  <line x1="56.67" y1="30" x2="56.67" y2="70" stroke="#000" stroke-width="1"/>
+  <line x1="30" y1="43.33" x2="70" y2="43.33" stroke="#000" stroke-width="1"/>
+  <line x1="30" y1="56.67" x2="70" y2="56.67" stroke="#000" stroke-width="1"/>
+  
+  <!-- Grid lines for top face -->
+  <line x1="43.33" y1="16.67" x2="63.33" y2="16.67" stroke="#000" stroke-width="1"/>
+  <line x1="56.67" y1="23.33" x2="76.67" y2="23.33" stroke="#000" stroke-width="1"/>
+  <line x1="36.67" y1="23.33" x2="56.67" y2="3.33" stroke="#000" stroke-width="1"/>
+  <line x1="50" y1="30" x2="70" y2="10" stroke="#000" stroke-width="1"/>
+  
+  <!-- Grid lines for right face -->
+  <line x1="70" y1="43.33" x2="90" y2="23.33" stroke="#000" stroke-width="1"/>
+  <line x1="70" y1="56.67" x2="90" y2="36.67" stroke="#000" stroke-width="1"/>
+  <line x1="76.67" y1="30" x2="76.67" y2="63.33" stroke="#000" stroke-width="1"/>
+  <line x1="83.33" y1="16.67" x2="83.33" y2="50" stroke="#000" stroke-width="1"/>
+</svg>
