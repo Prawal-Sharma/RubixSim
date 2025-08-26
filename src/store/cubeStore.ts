@@ -36,27 +36,39 @@ export const useCubeStore = create<CubeStore>((set, get) => ({
   scramble: '',
   
   executeMove: (notation) => {
-    const currentState = get().cubeState
-    const newState = applyMove(currentState, notation)
-    const move: Move = { notation, timestamp: Date.now() }
-    
-    set(state => ({
-      cubeState: newState,
-      moveHistory: [...state.moveHistory, move],
-      redoStack: [],
-      moveCount: state.moveCount + 1
-    }))
-    
-    // Auto-start timer on first move after scramble
-    const { isTimerRunning, startTime, scramble } = get()
-    if (!isTimerRunning && !startTime && scramble) {
-      get().startTimer()
+    try {
+      const currentState = get().cubeState
+      const newState = applyMove(currentState, notation)
+      const move: Move = { notation, timestamp: Date.now() }
+      
+      set(state => ({
+        cubeState: newState,
+        moveHistory: [...state.moveHistory, move],
+        redoStack: [],
+        moveCount: state.moveCount + 1
+      }))
+      
+      // Auto-start timer on first move after scramble
+      const { isTimerRunning, startTime, scramble } = get()
+      if (!isTimerRunning && !startTime && scramble) {
+        get().startTimer()
+      }
+    } catch (error) {
+      console.error('Failed to execute move:', notation, error)
     }
   },
   
   executeAlgorithm: (algorithm) => {
-    const moves = parseAlgorithm(algorithm)
-    moves.forEach(move => get().executeMove(move))
+    try {
+      const moves = parseAlgorithm(algorithm)
+      if (moves.length === 0) {
+        console.warn('No valid moves in algorithm:', algorithm)
+        return
+      }
+      moves.forEach(move => get().executeMove(move))
+    } catch (error) {
+      console.error('Failed to execute algorithm:', algorithm, error)
+    }
   },
   
   undo: () => {

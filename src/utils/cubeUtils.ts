@@ -118,6 +118,56 @@ export function applyMove(state: CubeState, move: MoveNotation): CubeState {
       break
     case 'B2':
       return applyMove(applyMove(state, 'B'), 'B')
+    
+    // Slice moves
+    case 'M':
+      rotateM(newState)
+      break
+    case "M'":
+      rotateMPrime(newState)
+      break
+    case 'M2':
+      return applyMove(applyMove(state, 'M'), 'M')
+    case 'E':
+      rotateE(newState)
+      break
+    case "E'":
+      rotateEPrime(newState)
+      break
+    case 'E2':
+      return applyMove(applyMove(state, 'E'), 'E')
+    case 'S':
+      rotateS(newState)
+      break
+    case "S'":
+      rotateSPrime(newState)
+      break
+    case 'S2':
+      return applyMove(applyMove(state, 'S'), 'S')
+      
+    // Cube rotations
+    case 'x':
+      return applyMove(applyMove(applyMove(state, 'R'), "M'"), "L'")
+    case "x'":
+      return applyMove(applyMove(applyMove(state, "R'"), 'M'), 'L')
+    case 'x2':
+      return applyMove(applyMove(state, 'x'), 'x')
+    case 'y':
+      return applyMove(applyMove(applyMove(state, 'U'), "E'"), "D'")
+    case "y'":
+      return applyMove(applyMove(applyMove(state, "U'"), 'E'), 'D')
+    case 'y2':
+      return applyMove(applyMove(state, 'y'), 'y')
+    case 'z':
+      return applyMove(applyMove(applyMove(state, 'F'), 'S'), "B'")
+    case "z'":
+      return applyMove(applyMove(applyMove(state, "F'"), "S'"), 'B')
+    case 'z2':
+      return applyMove(applyMove(state, 'z'), 'z')
+      
+    default:
+      console.warn(`Unknown move: ${move}`)
+      return state
   }
   
   return newState
@@ -267,8 +317,128 @@ function rotateEdgesBPrime(state: CubeState) {
   state.faces.R[2][2] = temp[2]
 }
 
+// Slice move implementations
+function rotateM(state: CubeState) {
+  const temp = [state.faces.F[0][1], state.faces.F[1][1], state.faces.F[2][1]]
+  state.faces.F[0][1] = state.faces.U[0][1]
+  state.faces.F[1][1] = state.faces.U[1][1]
+  state.faces.F[2][1] = state.faces.U[2][1]
+  state.faces.U[0][1] = state.faces.B[2][1]
+  state.faces.U[1][1] = state.faces.B[1][1]
+  state.faces.U[2][1] = state.faces.B[0][1]
+  state.faces.B[0][1] = state.faces.D[2][1]
+  state.faces.B[1][1] = state.faces.D[1][1]
+  state.faces.B[2][1] = state.faces.D[0][1]
+  state.faces.D[0][1] = temp[0]
+  state.faces.D[1][1] = temp[1]
+  state.faces.D[2][1] = temp[2]
+}
+
+function rotateMPrime(state: CubeState) {
+  const temp = [state.faces.F[0][1], state.faces.F[1][1], state.faces.F[2][1]]
+  state.faces.F[0][1] = state.faces.D[0][1]
+  state.faces.F[1][1] = state.faces.D[1][1]
+  state.faces.F[2][1] = state.faces.D[2][1]
+  state.faces.D[0][1] = state.faces.B[2][1]
+  state.faces.D[1][1] = state.faces.B[1][1]
+  state.faces.D[2][1] = state.faces.B[0][1]
+  state.faces.B[0][1] = state.faces.U[2][1]
+  state.faces.B[1][1] = state.faces.U[1][1]
+  state.faces.B[2][1] = state.faces.U[0][1]
+  state.faces.U[0][1] = temp[0]
+  state.faces.U[1][1] = temp[1]
+  state.faces.U[2][1] = temp[2]
+}
+
+function rotateE(state: CubeState) {
+  const temp = [state.faces.F[1][0], state.faces.F[1][1], state.faces.F[1][2]]
+  state.faces.F[1][0] = state.faces.L[1][0]
+  state.faces.F[1][1] = state.faces.L[1][1]
+  state.faces.F[1][2] = state.faces.L[1][2]
+  state.faces.L[1][0] = state.faces.B[1][0]
+  state.faces.L[1][1] = state.faces.B[1][1]
+  state.faces.L[1][2] = state.faces.B[1][2]
+  state.faces.B[1][0] = state.faces.R[1][0]
+  state.faces.B[1][1] = state.faces.R[1][1]
+  state.faces.B[1][2] = state.faces.R[1][2]
+  state.faces.R[1][0] = temp[0]
+  state.faces.R[1][1] = temp[1]
+  state.faces.R[1][2] = temp[2]
+}
+
+function rotateEPrime(state: CubeState) {
+  const temp = [state.faces.F[1][0], state.faces.F[1][1], state.faces.F[1][2]]
+  state.faces.F[1][0] = state.faces.R[1][0]
+  state.faces.F[1][1] = state.faces.R[1][1]
+  state.faces.F[1][2] = state.faces.R[1][2]
+  state.faces.R[1][0] = state.faces.B[1][0]
+  state.faces.R[1][1] = state.faces.B[1][1]
+  state.faces.R[1][2] = state.faces.B[1][2]
+  state.faces.B[1][0] = state.faces.L[1][0]
+  state.faces.B[1][1] = state.faces.L[1][1]
+  state.faces.B[1][2] = state.faces.L[1][2]
+  state.faces.L[1][0] = temp[0]
+  state.faces.L[1][1] = temp[1]
+  state.faces.L[1][2] = temp[2]
+}
+
+function rotateS(state: CubeState) {
+  const temp = [state.faces.U[1][0], state.faces.U[1][1], state.faces.U[1][2]]
+  state.faces.U[1][0] = state.faces.L[2][1]
+  state.faces.U[1][1] = state.faces.L[1][1]
+  state.faces.U[1][2] = state.faces.L[0][1]
+  state.faces.L[0][1] = state.faces.D[1][0]
+  state.faces.L[1][1] = state.faces.D[1][1]
+  state.faces.L[2][1] = state.faces.D[1][2]
+  state.faces.D[1][0] = state.faces.R[2][1]
+  state.faces.D[1][1] = state.faces.R[1][1]
+  state.faces.D[1][2] = state.faces.R[0][1]
+  state.faces.R[0][1] = temp[0]
+  state.faces.R[1][1] = temp[1]
+  state.faces.R[2][1] = temp[2]
+}
+
+function rotateSPrime(state: CubeState) {
+  const temp = [state.faces.U[1][0], state.faces.U[1][1], state.faces.U[1][2]]
+  state.faces.U[1][0] = state.faces.R[0][1]
+  state.faces.U[1][1] = state.faces.R[1][1]
+  state.faces.U[1][2] = state.faces.R[2][1]
+  state.faces.R[0][1] = state.faces.D[1][2]
+  state.faces.R[1][1] = state.faces.D[1][1]
+  state.faces.R[2][1] = state.faces.D[1][0]
+  state.faces.D[1][0] = state.faces.L[0][1]
+  state.faces.D[1][1] = state.faces.L[1][1]
+  state.faces.D[1][2] = state.faces.L[2][1]
+  state.faces.L[0][1] = temp[2]
+  state.faces.L[1][1] = temp[1]
+  state.faces.L[2][1] = temp[0]
+}
+
 export function parseAlgorithm(algorithm: string): MoveNotation[] {
-  return algorithm.split(' ').filter(move => move) as MoveNotation[]
+  const moves = algorithm.split(' ').filter(move => move)
+  const validMoves: MoveNotation[] = []
+  
+  for (const move of moves) {
+    if (isValidMove(move)) {
+      validMoves.push(move as MoveNotation)
+    } else {
+      console.warn(`Invalid move notation: ${move}`)
+    }
+  }
+  
+  return validMoves
+}
+
+function isValidMove(move: string): boolean {
+  const validMoves = [
+    'F', "F'", 'F2', 'B', "B'", 'B2',
+    'U', "U'", 'U2', 'D', "D'", 'D2',
+    'L', "L'", 'L2', 'R', "R'", 'R2',
+    'M', "M'", 'M2', 'E', "E'", 'E2',
+    'S', "S'", 'S2', 'x', "x'", 'x2',
+    'y', "y'", 'y2', 'z', "z'", 'z2'
+  ]
+  return validMoves.includes(move)
 }
 
 export function generateScramble(length: number = 20): string {
